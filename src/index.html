@@ -69,10 +69,36 @@
             </div>
           </div>
         </div>
+        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
+          <div class="card full-width">
+            <div class="card-body">
+              <h4>
+                Personal Sign
+              </h4>
+
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="personalSign" disabled>
+                Sign
+              </button>
+
+              <p class="info-text alert alert-warning">
+                Result: <span id="personalSignResult"></span>
+              </p>
+
+              <button class="btn btn-primary btn-lg btn-block mb-3" id="personalSignVerify" disabled>
+                Verify
+              </button>
+
+              <p class="info-text alert alert-warning">
+                @starcoin/starcoin recovery result:
+                <span id="personalSignRecoverResult"></span>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <section>
+    <section style="display:none">
       <div class="row d-flex justify-content-center">
         <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12">
           <div class="card">
@@ -98,7 +124,7 @@
       </div>
     </section>
 
-    <section>
+    <section style="display:none">
       <div class="row">
         <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
           <div class="card full-width">
@@ -207,9 +233,9 @@
     
       </div>
     </section>
-    <section>
+    <section style="display:none">
       <div class="row">
-        <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
+        <!-- <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
           <div class="card full-width">
             <div class="card-body">
               <h4>
@@ -234,7 +260,7 @@
               </p>
             </div>
           </div>
-        </div>
+        </div> -->
 
         <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
           <div class="card full-width">
@@ -301,7 +327,7 @@
         </div>
       </div>
     </section>
-    <section>
+    <section style="display:none">
       <div class="row">
         <div class="col-xl-4 col-lg-6 col-md-12 col-sm-12 col-12 d-flex align-items-stretch">
           <div class="card full-width">
@@ -393,7 +419,7 @@
 
   </main>
 
-  <div id="moduleFunctionTemplate">
+  <div id="moduleFunctionTemplate" style="display:none">
     <div class="list-group-item list-group-item-action">
       <div class="d-flex w-100 justify-content-between">
         <h4 class="mb-1 func-name">transfer</h4>
@@ -419,25 +445,25 @@
     </div>
   </div>
 
-  <div id="moduleFunctionTyArgTemplate">
+  <div id="moduleFunctionTyArgTemplate" style="display:none">
     <div class="form-group">
       <label for="inputAddress" class="tyarg-name">T1</label>
       <input type="text" class="form-control tyarg-val" placeholder="">
     </div>
   </div>
 
-  <div id="moduleFunctionArgTemplate">
+  <div id="moduleFunctionArgTemplate" style="display:none">
     <div class="form-group">
       <label for="inputAddress" class="arg-name">T1</label>
       <input type="text" class="form-control arg-val" placeholder="">
     </div>
   </div>
 
-  <div id="moduleFunctionExecuteBtnTemplate">
+  <div id="moduleFunctionExecuteBtnTemplate" style="display:none">
     <button type="button" class="btn btn-primary">Execute</button>
   </div>
 
-  <div id="moduleFunctionCallBtnTemplate">
+  <div id="moduleFunctionCallBtnTemplate" style="display:none">
     <button type="button" class="btn btn-primary">Call</button>
   </div>
 

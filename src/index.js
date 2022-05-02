@@ -846,12 +846,17 @@ const initialize = async () => {
      */
     personalSign.onclick = async () => {
       const exampleMessage = 'Example `personal_sign` message 中文'
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      const session = urlParams.get('session')
+      console.log(session)
+
       try {
         personalSignResult.innerHTML = ''
         personalSignVerify.disabled = false
         personalSignRecoverResult.innerHTML = ''
         const from = accounts[0]
-        const msg = `0x${ Buffer.from(exampleMessage, 'utf8').toString('hex') }`
+        const msg = `0x${ Buffer.from(session, 'utf8').toString('hex') }`
         console.log({ msg })
         const networkId = networkDiv.innerHTML
         const extraParams = { networkId }
@@ -863,6 +868,8 @@ const initialize = async () => {
           params: [msg, from, extraParams],
         })
         personalSignResult.innerHTML = sign
+        // send sign to server
+
       } catch (err) {
         console.error(err)
         personalSign.innerHTML = `Error: ${ err.message }`
@@ -879,12 +886,23 @@ const initialize = async () => {
         const recoveredAddr = await utils.signedMessage.recoverSignedMessageAddress(sign)
         console.log({ recoveredAddr })
 
-        if (recoveredAddr === from) {
-          console.log(`@starcoin/starcoin Successfully verified signer as ${ recoveredAddr }`)
-          personalSignRecoverResult.innerHTML = recoveredAddr
-        } else {
-          console.log('@starcoin/starcoin Failed to verify signer')
-        }
+        fetch(`/api/verify`, {
+          body: JSON.stringify({ from, sign }),
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          method: 'POST'
+        }).then(response => response.json())
+          .then(json_data => {
+          // const json_data = response.json();
+          console.log(json_data);
+          if (json_data.status === 'success') {
+            console.log(`@starcoin/starcoin Successfully verified signer as ${ recoveredAddr }`)
+            personalSignRecoverResult.innerHTML = recoveredAddr
+          } else {
+            console.log('@starcoin/starcoin Failed to verify signer')
+          }
+        });
       } catch (err) {
         console.error(err)
         personalSignRecoverResult.innerHTML = `Error: ${ err.message }`
